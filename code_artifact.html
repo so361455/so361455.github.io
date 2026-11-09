@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Pick | 質感好物與零食推薦</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font (Noto Sans TC & Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        warm: {
+                            50: '#FDFBF7',
+                            100: '#F7F3E9',
+                            200: '#EBE3D5',
+                            300: '#D5C7B0',
+                            500: '#B09B7C',
+                            600: '#947D5C',
+                            700: '#736043',
+                            800: '#52432C',
+                        },
+                        amber: {
+                            400: '#F59E0B',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Noto Sans TC', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #FDFBF7;
+            color: #4A4036;
+            font-family: 'Inter', 'Noto Sans TC', sans-serif;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- 頂部導覽列 Header -->
+    <header class="sticky top-0 z-50 bg-[#FDFBF7]/90 backdrop-blur-md border-b border-warm-200 shadow-sm transition-all">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-2 group">
+                <div class="w-10 h-10 rounded-full bg-warm-500 text-white flex items-center justify-center font-bold text-xl shadow-md group-hover:bg-warm-600 transition-colors">
+                    <i class="fa-solid me-0.5 fa-cookie-bite"></i>
+                </div>
+                <div>
+                    <span class="text-xl font-bold tracking-tight text-warm-800">Daily<span class="text-warm-500">Pick</span></span>
+                    <span class="hidden sm:inline-block text-xs bg-warm-100 text-warm-700 px-2 py-0.5 rounded-full ml-2 font-medium">質感選物指南</span>
+                </div>
+            </a>
+
+            <!-- 桌機選單 -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="#snacks" class="text-warm-700 hover:text-warm-500 transition-colors flex items-center gap-1.5">
+                    <i class="fa-solid fa-store text-xs"></i> 零食推薦區
+                </a>
+                <a href="#reviews" class="text-warm-700 hover:text-warm-500 transition-colors flex items-center gap-1.5">
+                    <i class="fa-solid fa-box-open text-xs"></i> 好物開箱區
+                </a>
+                <a href="#about" class="text-warm-700 hover:text-warm-500 transition-colors flex items-center gap-1.5">
+                    <i class="fa-regular fa-heart text-xs"></i> 關於本站
+                </a>
+            </nav>
+
+            <!-- 手機選單按鈕 -->
+            <button id="mobile-menu-btn" class="md:hidden text-warm-700 hover:text-warm-900 focus:outline-none p-2" aria-label="Toggle menu">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
+
+        <!-- 手機下拉選單 -->
+        <div id="mobile-menu" class="hidden md:hidden bg-warm-50 border-b border-warm-200 px-4 pt-2 pb-4 space-y-3">
+            <a href="#snacks" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-warm-700 hover:bg-warm-100">
+                <i class="fa-solid fa-store me-2"></i> 零食推薦區
+            </a>
+            <a href="#reviews" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-warm-700 hover:bg-warm-100">
+                <i class="fa-solid fa-box-open me-2"></i> 好物開箱區
+            </a>
+            <a href="#about" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-warm-700 hover:bg-warm-100">
+                <i class="fa-regular fa-heart me-2"></i> 關於本站
+            </a>
+        </div>
+    </header>
+
+    <!-- 主視覺區 Hero Banner -->
+    <section class="relative bg-gradient-to-b from-warm-100/60 to-warm-50 py-12 md:py-20 border-b border-warm-200/50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span class="inline-block px-3 py-1 bg-warm-200/80 text-warm-800 text-xs sm:text-sm font-medium rounded-full mb-4 shadow-sm">
+                ✨ 陪你打造更有儀式感的日常生活
+            </span>
+            <h1 class="text-3xl sm:text-5xl font-bold text-warm-800 tracking-tight leading-tight mb-4">
+                精選好吃零食 ‧ 質感生活開箱
+            </h1>
+            <p class="max-w-2xl mx-auto text-warm-600 text-sm sm:text-base leading-relaxed mb-8">
+                嚴選平價美味與極致好物，為你整理出最實用的購物導覽。直接點擊連結即可輕鬆下單，打造理想的美好生活體驗！
+            </p>
+            <div class="flex justify-center gap-4">
+                <a href="#snacks" class="px-6 py-3 bg-warm-600 hover:bg-warm-700 text-white font-medium rounded-xl shadow-md transition-all hover:shadow-lg flex items-center gap-2">
+                    <i class="fa-solid fa-cookie"></i> 逛逛零食榜
+                </a>
+                <a href="#reviews" class="px-6 py-3 bg-white border border-warm-300 hover:bg-warm-100 text-warm-700 font-medium rounded-xl shadow-sm transition-all flex items-center gap-2">
+                    <i class="fa-solid fa-cube"></i> 查看開箱心得
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 主要內容區 -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-20">
+
+        <!-- 1. 零食推薦區 (Snacks Recommendation) -->
+        <section id="snacks" class="scroll-mt-24">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="w-2.5 h-6 bg-warm-500 rounded-full"></span>
+                        <h2 class="text-2xl sm:text-3xl font-bold text-warm-800">熱門零食推薦榜</h2>
+                    </div>
+                    <p class="text-warm-600 text-sm mt-1">精選解饞辦公室嘴饞首選，美味不踩雷</p>
+                </div>
+
+                <!-- 搜尋與分類選單 -->
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <!-- 搜尋框 -->
+                    <div class="relative">
+                        <input type="text" id="snack-search" placeholder="搜尋零食名稱..." 
+                               class="w-full sm:w-48 pl-9 pr-4 py-2 bg-white border border-warm-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-warm-500/50 shadow-sm">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-warm-400 text-xs"></i>
+                    </div>
+                    <!-- 分類按鈕組 -->
+                    <div class="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 hide-scrollbar" id="snack-categories">
+                        <button data-cat="all" class="cat-btn active px-3.5 py-2 text-xs sm:text-sm font-medium rounded-xl whitespace-nowrap bg-warm-600 text-white shadow-sm transition-all">全部</button>
+                        <button data-cat="sweet" class="cat-btn px-3.5 py-2 text-xs sm:text-sm font-medium rounded-xl whitespace-nowrap bg-white text-warm-700 hover:bg-warm-100 border border-warm-200 transition-all">甜甜甜點</button>
+                        <button data-cat="salty" class="cat-btn px-3.5 py-2 text-xs sm:text-sm font-medium rounded-xl whitespace-nowrap bg-white text-warm-700 hover:bg-warm-100 border border-warm-200 transition-all">鹹香解饞</button>
+                        <button data-cat="healthy" class="cat-btn px-3.5 py-2 text-xs sm:text-sm font-medium rounded-xl whitespace-nowrap bg-white text-warm-700 hover:bg-warm-100 border border-warm-200 transition-all">低卡健康</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 零食列表 (網格/卡片直列) -->
+            <div id="snack-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- 由 JavaScript 動態渲染零食卡片 -->
+            </div>
+
+            <!-- 無搜尋結果提示 -->
+            <div id="no-snack-msg" class="hidden text-center py-12 bg-white rounded-2xl border border-warm-200">
+                <i class="fa-regular fa-face-frown text-4xl text-warm-400 mb-2"></i>
+                <p class="text-warm-600 font-medium">找不到符合條件的零食，換個關鍵字試試看吧！</p>
+            </div>
+        </section>
+
+        <!-- 2. 日常好物開箱區 (Featured Product Reviews) -->
+        <section id="reviews" class="scroll-mt-24">
+            <div class="mb-8">
+                <div class="flex items-center gap-2">
+                    <span class="w-2.5 h-6 bg-warm-500 rounded-full"></span>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-warm-800">日常質感好物開箱</h2>
+                </div>
+                <p class="text-warm-600 text-sm mt-1">親自使用實測！為你評測提升生活幸福感的小物</p>
+            </div>
+
+            <!-- 開箱文章卡片列表 (橫向大卡片) -->
+            <div id="review-list" class="space-y-8">
+                <!-- 由 JavaScript 動態渲染開箱卡片 -->
+            </div>
+        </section>
+
+        <!-- 3. 關於分享區 (About Section) -->
+        <section id="about" class="bg-gradient-to-br from-warm-100 to-warm-200/50 rounded-3xl p-8 sm:p-12 shadow-sm border border-warm-200 scroll-mt-24">
+            <div class="max-w-3xl mx-auto text-center space-y-4">
+                <div class="w-16 h-16 rounded-full bg-white text-warm-600 flex items-center justify-center text-2xl mx-auto shadow-md">
+                    <i class="fa-solid fa-mug-hot"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-warm-800">關於 DailyPick 好物採集</h3>
+                <p class="text-warm-700 text-sm sm:text-base leading-relaxed">
+                    我們熱愛探索生活中的小驚喜。無論是工作空檔的療癒美味零食，還是能大幅提升生活品質的質感家居小物。
+                    本站所提供的購物連結皆經過嚴選整理，希望幫助大家省去踩雷的時間，開心選購心儀的好物！
+                </p>
+                <div class="pt-4 flex justify-center gap-4 text-warm-600">
+                    <a href="#" class="w-10 h-10 rounded-full bg-white hover:bg-warm-500 hover:text-white transition-colors flex items-center justify-center shadow-sm" title="Instagram">
+                        <i class="fa-brands fa-instagram text-lg"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-white hover:bg-warm-500 hover:text-white transition-colors flex items-center justify-center shadow-sm" title="Facebook">
+                        <i class="fa-brands fa-facebook-f text-lg"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-white hover:bg-warm-500 hover:text-white transition-colors flex items-center justify-center shadow-sm" title="Email Us">
+                        <i class="fa-regular fa-envelope text-lg"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 頁尾 Footer -->
+    <footer class="bg-warm-800 text-warm-200 py-8 border-t border-warm-700 mt-12">
+        <div class="max-w-6xl mx-auto px-4 text-center text-xs sm:text-sm space-y-2">
+            <p>© 2026 DailyPick 選物開箱指南. All Rights Reserved.</p>
+            <p class="text-warm-400">聲明：點擊部分賣場連結購買商品可能為推廣分銷連結，不影響您的購買價格與權益。</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Data & Logic -->
+    <script>
+        // --- 1. 範例零食資料 (Snacks Data) ---
+        const snacksData = [
+            {
+                id: 1,
+                name: "濃郁苦甜黑巧巧克酥",
+                category: "sweet",
+                categoryName: "甜甜甜點",
+                rating: 4.9,
+                price: "NT$ 159",
+                discount: "85折熱銷",
+                image: "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=600&q=80",
+                description: "選用72%比利時巧克力製作，外層酥脆內餡濃郁爆漿，微苦不甜膩，搭配黑咖啡簡直是午後人間美味！",
+                shopUrl: "https://shopee.tw"
+            },
+            {
+                id: 2,
+                name: "日式炙燒明太子洋洋洋洋洋芋片",
+                category: "salty",
+                categoryName: "鹹香解饞",
+                rating: 4.8,
+                price: "NT$ 65",
+                discount: "買五送一",
+                image: "https://images.unsplash.com/photo-1566478989037-eec170784d0b?auto=format&fit=crop&w=600&q=80",
+                description: "厚切波浪口感，佐以香濃海苔與鹹香炙燒明太子粉，鹹甜交織爽脆涮嘴，追劇不可或缺的邪惡零食！",
+                shopUrl: "https://shopee.tw"
+            },
+            {
+                id: 3,
+                name: "低卡凍乾綜合莓果乾",
+                category: "healthy",
+                categoryName: "低卡健康",
+                rating: 4.7,
+                price: "NT$ 220",
+                discount: "滿額免運",
+                image: "https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=600&q=80",
+                description: "採用真空冷凍乾燥技術鎖住養分，包含藍莓、草莓與覆盆莓。無添加精緻糖，加進優格或牛奶超級絕配！",
+                shopUrl: "https://shopee.tw"
+            },
+            {
+                id: 4,
+                name: "手作焦糖瑪奇朵堅果塔",
+                category: "sweet",
+                categoryName: "甜甜甜點",
+                rating: 4.9,
+                price: "NT$ 280",
+                discount: "經典熱銷",
+                image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80",
+                description: "滿滿的夏威夷豆與胡桃，裹上慢火熬煮的焦糖醬，派皮奶香四溢，口感豐富多層次，辦公室團購第一名！",
+                shopUrl: "https://shopee.tw"
+            },
+            {
+                id: 5,
+                name: "泰式酸辣海苔脆片",
+                category: "salty",
+                categoryName: "鹹香解饞",
+                rating: 4.6,
+                price: "NT$ 89",
+                discount: "限時特價",
+                image: "https://images.unsplash.com/photo-1621996346565-e3d5d6273413?auto=format&fit=crop&w=600&q=80",
+                description: "獨特檸檬葉與香茅調味，搭配超薄脆的海苔，酸酸辣辣超過癮，卡路里低且非常開胃！",
+                shopUrl: "https://shopee.tw"
+            },
+            {
+                id: 6,
+                name: "高蛋白烘烤黑豆堅果包",
+                category: "healthy",
+                categoryName: "低卡健康",
+                rating: 4.5,
+                price: "NT$ 199",
+                discount: "健身推薦",
+                image: "https://images.unsplash.com/photo-1536591375315-1b836814d2b9?auto=format&fit=crop&w=600&q=80",
+                description: "低溫慢火烘烤，無油炸更健康。富含植物性蛋白質與優質油脂，小包裝方便攜帶，下午茶解餓無負擔。",
+                shopUrl: "https://shopee.tw"
+            }
+        ];
+
+        // --- 2. 範例好物開箱資料 (Reviews Data) ---
+        const reviewsData = [
+            {
+                id: 101,
+                title: "極簡極致療癒！靜音極細霧化木紋香氛水氧機",
+                tag: "居家生活",
+                date: "2026-03-20",
+                image: "https://images.unsplash.com/photo-1602928321679-560bb453f190?auto=format&fit=crop&w=800&q=80",
+                score: 4.9,
+                excerpt: "結束一天疲憊的工作，回家開啟沉香精油與水氧機，細緻霧氣伴隨溫暖黃光，瞬間把房間變成高級SPA會館！",
+                pros: ["極靜音設計 (小於25dB)", "具備定時與七彩暖光切換", "自動斷電保護超安心"],
+                cons: ["水箱容量較小，大坪數需頻繁加水"],
+                shopUrl: "https://momo.com.tw"
+            },
+            {
+                id: 102,
+                title: "辦公室救星！人體工學記憶棉護腰靠墊",
+                tag: "數位周邊 / 辦公",
+                date: "2026-03-15",
+                image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80",
+                description: "長期坐在電腦前久坐族的福音，支撐力極佳，實測連續使用兩週久坐腰酸問題明顯改善！",
+                score: 4.8,
+                excerpt: "這款靠墊採用高密度慢回彈記憶棉，完美貼合腰部曲線，搭配透氣天絲布套，夏天坐一整天也不覺得悶熱！",
+                pros: ["雙向弧度支撐，減輕腰椎壓力", "布套可拆洗，衛生便利", "附防滑綁帶固能在椅背"],
+                cons: ["體積稍大，不適合太小的折疊椅"],
+                shopUrl: "https://pchome.com.tw"
+            },
+            {
+                id: 103,
+                title: "復古質感手沖溫控電熱水壺 (法式奶油白)",
+                tag: "廚房家電",
+                date: "2026-03-08",
+                image: "https://images.unsplash.com/photo-1570222094114-d054a817e56b?auto=format&fit=crop&w=800&q=80",
+                score: 5.0,
+                excerpt: "擺在檯面上就是極致的藝術品！天鵝頸細口設計精準控制出水量，精準1℃溫控讓你隨時沖泡出極品手沖咖啡與好茶。",
+                pros: ["英製Strix溫控器，快速沸騰", "LED實時顯示水溫", "防燙人體工學把手"],
+                cons: ["價格稍高，但質感完全物超所值"],
+                shopUrl: "https://momo.com.tw"
+            }
+        ];
+
+        // --- 3. DOM 渲染邏輯 ---
+
+        // 渲染星級評分 UI 輔助函式
+        function renderStars(rating) {
+            const fullStars = Math.floor(rating);
+            const hasHalf = rating % 1 >= 0.5;
+            let starsHtml = '';
+            for (let i = 0; i < fullStars; i++) {
+                starsHtml += `<i class="fa-solid fa-star text-amber-400"></i>`;
+            }
+            if (hasHalf) {
+                starsHtml += `<i class="fa-solid fa-star-half-stroke text-amber-400"></i>`;
+            }
+            return `<div class="flex items-center gap-1 text-xs">${starsHtml} <span class="text-warm-600 font-semibold ml-1">${rating}</span></div>`;
+        }
+
+        // 渲染零食列表
+        function renderSnacks(items) {
+            const container = document.getElementById('snack-list');
+            const noMsg = document.getElementById('no-snack-msg');
+
+            if (items.length === 0) {
+                container.innerHTML = '';
+                noMsg.classList.remove('hidden');
+                return;
+            }
+
+            noMsg.classList.add('hidden');
+            container.innerHTML = items.map(snack => `
+                <div class="bg-white rounded-2xl overflow-hidden border border-warm-200/80 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <!-- 圖片區 -->
+                        <div class="relative overflow-hidden aspect-[4/3]">
+                            <img src="${snack.image}" alt="${snack.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onerror="this.src='https://placehold.co/600x400/EBE3D5/736043?text=Tasty+Snack'">
+                            <span class="absolute top-3 left-3 bg-warm-800/80 backdrop-blur-md text-white text-xs px-2.5 py-1 rounded-full font-medium">
+                                ${snack.categoryName}
+                            </span>
+                            <span class="absolute top-3 right-3 bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-md shadow">
+                                ${snack.discount}
+                            </span>
+                        </div>
+                        
+                        <!-- 內文區 -->
+                        <div class="p-5">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-bold text-lg text-warm-800 group-hover:text-warm-600 transition-colors line-clamp-1">${snack.name}</h3>
+                            </div>
+                            <div class="mb-3">
+                                ${renderStars(snack.rating)}
+                            </div>
+                            <p class="text-warm-600 text-xs sm:text-sm line-clamp-2 leading-relaxed mb-4">
+                                ${snack.description}
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 底部價格與購買 -->
+                    <div class="px-5 pb-5 pt-0 flex items-center justify-between border-t border-warm-100 mt-auto pt-4">
+                        <div>
+                            <span class="text-xs text-warm-500 block">推薦優惠價</span>
+                            <span class="text-lg font-bold text-warm-800">${snack.price}</span>
+                        </div>
+                        <a href="${snack.shopUrl}" target="_blank" rel="noopener noreferrer" 
+                           class="px-4 py-2 bg-warm-600 hover:bg-warm-700 text-white text-sm font-medium rounded-xl shadow-sm hover:shadow transition-all flex items-center gap-1.5 active:scale-95">
+                            <span>前往購買</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 渲染好物開箱列表
+        function renderReviews(reviews) {
+            const container = document.getElementById('review-list');
+            container.innerHTML = reviews.map(item => `
+                <article class="bg-white rounded-3xl overflow-hidden border border-warm-200/80 shadow-sm hover:shadow-md transition-all duration-300 grid grid-cols-1 lg:grid-cols-12">
+                    <!-- 封面圖 -->
+                    <div class="lg:col-span-5 relative min-h-[240px] lg:min-h-full overflow-hidden">
+                        <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" onerror="this.src='https://placehold.co/800x600/EBE3D5/736043?text=Product+Review'">
+                        <span class="absolute top-4 left-4 bg-warm-600 text-white text-xs px-3 py-1 rounded-full font-medium shadow-sm">
+                            ${item.tag}
+                        </span>
+                    </div>
+
+                    <!-- 開箱內文細節 -->
+                    <div class="lg:col-span-7 p-6 sm:p-8 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between text-xs text-warm-500 mb-2">
+                                <span><i class="fa-regular fa-calendar me-1"></i> ${item.date}</span>
+                                ${renderStars(item.score)}
+                            </div>
+                            
+                            <h3 class="text-xl sm:text-2xl font-bold text-warm-800 mb-3 hover:text-warm-600 transition-colors">
+                                ${item.title}
+                            </h3>
+
+                            <p class="text-warm-600 text-sm leading-relaxed mb-6">
+                                ${item.excerpt}
+                            </p>
+
+                            <!-- 優缺點標籤 -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6 bg-warm-50 p-4 rounded-2xl border border-warm-200/50">
+                                <div>
+                                    <span class="text-xs font-bold text-emerald-700 flex items-center gap-1 mb-1.5">
+                                        <i class="fa-solid fa-circle-check"></i> 亮點優點
+                                    </span>
+                                    <ul class="text-xs text-warm-700 space-y-1">
+                                        ${item.pros.map(p => `<li class="flex items-start gap-1"><span>•</span> <span>${p}</span></li>`).join('')}
+                                    </ul>
+                                </div>
+                                <div>
+                                    <span class="text-xs font-bold text-amber-700 flex items-center gap-1 mb-1.5">
+                                        <i class="fa-solid fa-circle-info"></i> 注意事項
+                                    </span>
+                                    <ul class="text-xs text-warm-700 space-y-1">
+                                        ${item.cons.map(c => `<li class="flex items-start gap-1"><span>•</span> <span>${c}</span></li>`).join('')}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 底部導流按鈕 -->
+                        <div class="flex items-center justify-between pt-4 border-t border-warm-100">
+                            <span class="text-xs text-warm-500 font-medium">實測綜合評分：<strong class="text-warm-800 text-sm">${item.score} / 5.0</strong></span>
+                            <a href="${item.shopUrl}" target="_blank" rel="noopener noreferrer" 
+                               class="px-5 py-2.5 bg-warm-800 hover:bg-warm-700 text-white text-sm font-medium rounded-xl shadow-md transition-all flex items-center gap-2 active:scale-95">
+                                <i class="fa-solid fa-bag-shopping"></i>
+                                <span>直接入手 / 查看賣場</span>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            `).join('');
+        }
+
+        // --- 4. 篩選與搜尋互動 ---
+        let currentCategory = 'all';
+        let searchQuery = '';
+
+        function filterSnacks() {
+            let filtered = snacksData;
+
+            // 分類篩選
+            if (currentCategory !== 'all') {
+                filtered = filtered.filter(item => item.category === currentCategory);
+            }
+
+            // 關鍵字搜尋
+            if (searchQuery.trim() !== '') {
+                const query = searchQuery.toLowerCase();
+                filtered = filtered.filter(item => 
+                    item.name.toLowerCase().includes(query) || 
+                    item.description.toLowerCase().includes(query)
+                );
+            }
+
+            renderSnacks(filtered);
+        }
+
+        // 初始化與事件監聽
+        document.addEventListener('DOMContentLoaded', () => {
+            // 初始渲染
+            renderSnacks(snacksData);
+            renderReviews(reviewsData);
+
+            // 分類按鈕點擊
+            const catButtons = document.querySelectorAll('#snack-categories .cat-btn');
+            catButtons.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    catButtons.forEach(b => {
+                        b.classList.remove('bg-warm-600', 'text-white');
+                        b.classList.add('bg-white', 'text-warm-700', 'hover:bg-warm-100');
+                    });
+                    
+                    e.currentTarget.classList.remove('bg-white', 'text-warm-700', 'hover:bg-warm-100');
+                    e.currentTarget.classList.add('bg-warm-600', 'text-white');
+
+                    currentCategory = e.currentTarget.getAttribute('data-cat');
+                    filterSnacks();
+                });
+            });
+
+            // 搜尋框輸入監聽
+            const searchInput = document.getElementById('snack-search');
+            searchInput.addEventListener('input', (e) => {
+                searchQuery = e.target.value;
+                filterSnacks();
+            });
+
+            // 手機版選單 Toggle
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
